@@ -1,0 +1,35 @@
+# with no duplecate of input
+class Solution:
+    def subsets(self, nums: List[int]) -> List[List[int]]:
+        n=len(nums)
+        ans=[]
+        totalsubsets=(1<<n)
+        for val in range(totalsubsets):
+            temp=[]
+            for i in range(n):
+                if(val&(1<<i)):
+                    temp.append(nums[i])
+            ans.append(temp)
+        return ans
+        
+
+
+
+
+# if input has duplicates and should not return duplicates in output
+class Solution:
+    def subsetsWithDup(self, nums: List[int]) -> List[List[int]]:
+        n=len(nums)
+        nums.sort()
+        ans=set()
+        totalsubsets=(1<<n)
+        for val in range(totalsubsets):
+            temp=[]
+            for i in range(n):
+                if(val&(1<<i)):
+                    temp.append(nums[i])
+            ans.add(tuple(temp))
+        return [list(subset) for subset in ans] 
+
+
+
