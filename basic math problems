@@ -1,0 +1,53 @@
+#sum of primes
+def checkprime(n):
+    c=0
+    for i in range(1,n+1):
+        if(n%i==0):
+            c+=1
+    if (c==2):
+        return True
+    else:
+        return False
+n=int(input())
+sum=0
+while(n!=0):
+    rem=n%10
+    if(checkprime(rem)):
+        sum+=rem
+    n=n//10
+print(sum)
+
+#prime number:
+n=int(input())
+c=0
+for i in range(1,n+1):
+    if(n%i==0):
+        c+=1
+if(c==2):
+    print("prime")
+else:
+    print("not prime")
+
+
+#finding no of digits
+n=int(input())
+count=0
+while(n>0):
+    n=n//10
+    count+=1
+print(count)
+
+
+#finding sum until gets 1 digit:
+n=1554
+while(n>=10):
+    result=0
+    while(n>0):
+        rem=n%10
+        result=result+rem
+        n=n//10
+    n=result
+
+print(n)
+
+    
