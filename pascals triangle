@@ -1,0 +1,93 @@
+# given row,colum tell the element at that place
+
+def ncr(n, r):
+    if r > n:
+        return 0
+    if r == 0 or r == n:
+        return 1
+    res = 1
+    for i in range(1, r + 1):
+        res = res * (n - i + 1) // i
+    return res
+n=5
+k=3
+print(ncr(n,r))
+output:6
+---------------------------------------
+#print any with nth row output
+class Solution:
+    def getRow(self, rowIndex: int) -> List[int]:
+        res=1
+        ans=[1]
+        for i in range(1,rowIndex+1):
+            res=res*(rowIndex-i+1)//i
+            ans.append(res)
+        return ans
+----------------------------------------
+#print whole triangle
+from typing import List
+
+class Solution:
+    def generate(self, numRows: int) -> List[List[int]]:
+        triangle = []
+        for row in range(numRows):
+            res = 1
+            current_row = []
+            for col in range(row + 1):
+                current_row.append(res)
+                res = res * (row - col) // (col + 1)
+            triangle.append(current_row)
+        return triangle
+Outer loop: row = 0
+res = 1
+col = 0
+current_row = [1]
+triangle = [[1]]
+🔁 row = 1
+res = 1
+col = 0: append 1 → current_row = [1]
+res = 1 * (1 - 0) // (0 + 1) = 1
+col = 1: append 1 → current_row = [1, 1]
+triangle = [[1], [1, 1]]
+🔁 row = 2
+res = 1
+col = 0: append 1 → current_row = [1]
+res = 1 * (2 - 0) // (0 + 1) = 2
+col = 1: append 2 → current_row = [1, 2]
+res = 2 * (2 - 1) // (1 + 1) = 1
+col = 2: append 1 → current_row = [1, 2, 1]
+triangle = [[1], [1, 1], [1, 2, 1]]
+🔁 row = 3
+res = 1
+col = 0: append 1
+res = 3
+col = 1: append 3
+res = 3
+col = 2: append 3
+res = 1
+col = 3: append 1
+triangle = [[1], [1, 1], [1, 2, 1], [1, 3, 3, 1]]
+🔁 row = 4
+res = 1
+col = 0: append 1
+res = 4
+col = 1: append 4
+res = 6
+col = 2: append 6
+res = 4
+col = 3: append 4
+res = 1
+col = 4: append 1
+triangle = [[1], [1, 1], [1, 2, 1], [1, 3, 3, 1], [1, 4, 6, 4, 1]]
+✅ Final Result (for numRows = 5):
+[
+ [1],
+ [1, 1],
+ [1, 2, 1],
+ [1, 3, 3, 1],
+ [1, 4, 6, 4, 1]
+]
+
+ 
+
+        
