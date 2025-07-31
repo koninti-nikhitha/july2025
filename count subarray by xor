@@ -1,0 +1,32 @@
+#brute forse
+nums=[1,2,4,5,1]
+k=2
+count=0
+n=len(nums)
+for i in range(1,n):
+    XOR=0
+    for j in range(i,n):
+        XOR^=nums[j]
+        if(XOR==k):
+            count+=1
+print(count)
+---------------------------
+
+
+  nums=[1,2,4,5,1]
+k=2
+count=0
+XR=0
+prefix_map={0:1}
+for i in nums:
+    XR^=i
+    if XR^k in prefix_map:
+        count+=prefix_map[XR^k]
+    if XR in prefix_map:
+        prefix_map[XR]+=1
+    else:
+        prefix_map[XR]=1
+print(count)
+        
+    
+    
