@@ -1,0 +1,23 @@
+def generate(ind,curr_subset,ans,nums,target):
+    #need=target-nums[ind]
+    if(target==0):
+        ans.append(curr_subset.copy())
+        return
+    if(target<0 or ind==len(nums)):
+        return
+    curr_subset.append(nums[ind])
+    generate(ind,curr_subset,ans,nums,target-nums[ind])
+    curr_subset.pop()
+    generate(ind+1,curr_subset,ans,nums,target)
+def combinationSum(nums,target):
+    ind=0
+    curr_subset=[]
+    ans=[]
+    generate(ind,curr_subset,ans,nums,target)
+    return ans
+nums=[2,3,5,7]
+target=7
+print(combinationSum(nums,target))
+
+  output:
+[[2,5],[7]]
