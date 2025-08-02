@@ -1,2 +1,2 @@
-# july2025      dsa pthon problem
+#      dsa pthon problem
 these are the problems i done
