@@ -1,0 +1,19 @@
+def sort(nums):
+    if (len(nums[0])==0):
+        return ""
+    
+    n=len(nums)
+    nums.sort()
+    first=nums[0]
+    last=nums[n-1]
+    n=min(len(first),len(last))
+    ans=""
+    for i in range(0,n):
+        if(first[i]!=last[i]):
+            return ans
+        ans+=first[i]
+    return ans
+            
+#nums=["flower","flow","fog"]
+nums=" "
+print(sort(nums))
