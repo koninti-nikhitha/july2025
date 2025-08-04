@@ -117,3 +117,34 @@ merge(arr1, arr2)
 print("arr1:", arr1)
 print("arr2:", arr2)
 sc=0 with no sorting
+from typing import List
+import math
+
+with no zeros appending
+from typing import List
+
+class Solution:
+    def merge(self, arr1: List[int], m: int, arr2: List[int], n: int) -> List[int]:
+        # Start merging from the back
+        i = m - 1
+        j = n - 1
+        k = m + n - 1
+
+        # Merge in-place in arr1 from the back
+        while i >= 0 and j >= 0:
+            if arr1[i] > arr2[j]:
+                arr1[k] = arr1[i]
+                i -= 1
+            else:
+                arr1[k] = arr2[j]
+                j -= 1
+            k -= 1
+
+        # Copy remaining arr2 elements, if any
+        while j >= 0:
+            arr1[k] = arr2[j]
+            j -= 1
+            k -= 1
+
+        # Return only the sorted, merged portion (drop trailing 0s)
+        return arr1[:m + n]
