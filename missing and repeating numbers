@@ -37,3 +37,29 @@ for i in range(1, n + 1):
 
 print("Missing:", missing)
 print("Repeating:", repeating)
+
+
+optimal sol
+#optimal sol of missing repeating num
+arr=[1,1,2,3,4,6]
+n=len(arr)
+#y=missing
+#x=repeating
+#s=sum of aray sn=sum od n natural numbers
+#s2=sum of squares of array elements s2n=sum of nat numbers
+s=sum(x for x in arr)
+sn=n*(n+1)//2
+s2=sum(x**2 for x in arr)
+s2n=n * (n + 1) * (2 * n + 1) // 6
+val1=s-sn#x-y=-4
+val2=s2-s2n#x2-y2=-24. (x+y)(x-y)/x-y
+val2=val2/val1#x+y=6
+x=(val1+val2 )/2
+y=x-val1
+print(int(x))
+print(int(y))
+
+output:
+1
+5
+
