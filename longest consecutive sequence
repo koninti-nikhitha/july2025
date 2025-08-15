@@ -1,0 +1,56 @@
+class Solution:
+    def longestConsecutive(self, nums: List[int]) -> int:
+        if not nums:
+            return 0
+
+        num_set = set(nums)
+        max_length = 0
+        
+        for num in num_set:
+            if num - 1 not in num_set:  # start of a sequence
+                current = num
+                count = 1
+                while current + 1 in num_set:
+                    current += 1
+                    count += 1
+                max_length = max(max_length, count)
+        
+        return max_length
+
+
+
+
+dry run:
+Step 1 — Setup
+num_set = {100, 4, 200, 1, 3, 2}  
+max_length = 0
+Step 2 — Loop over num_set
+We check each number to see if it’s the start of a sequence (num - 1 not in num_set).
+Iteration 1: num = 100
+99 not in num_set → True → start of a sequence.
+current = 100, count = 1
+101 in num_set? No → stop.
+max_length = max(0, 1) = 1
+Iteration 2: num = 4
+3 not in num_set? False → skip (means 4 is inside a sequence, not the start).
+Iteration 3: num = 200
+199 not in num_set → True → start of a sequence.
+current = 200, count = 1
+201 in num_set? No → stop.
+max_length = max(1, 1) = 1
+Iteration 4: num = 1
+0 not in num_set → True → start of a sequence.
+current = 1, count = 1
+2 in num_set → Yes → current = 2, count = 2
+3 in num_set → Yes → current = 3, count = 3
+4 in num_set → Yes → current = 4, count = 4
+5 in num_set? No → stop.
+max_length = max(1, 4) = 4
+Iteration 5: num = 3
+2 not in num_set? False → skip.
+Iteration 6: num = 2
+1 not in num_set? False → skip.
+Step 3 — End of loop
+Return max_length:
+return 4
+✅ Answer: The longest consecutive sequence is [1, 2, 3, 4] with length 4.
