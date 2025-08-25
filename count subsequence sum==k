@@ -1,0 +1,28 @@
+def generate(ind, nums, curr_subset, ans, k):
+    if k < 0:  # pruning
+        return
+    if k == 0:
+        return (curr_subset.copy())# store as tuple
+        
+    if ind == len(nums):
+        return 
+    
+    # include nums[ind]
+    curr_subset.append(nums[ind])
+    ans=generate(ind+1, nums, curr_subset, ans, k-nums[ind])
+    if ans is not None:
+        return ans
+    curr_subset.pop()
+    #
+    # exclude nums[ind]
+    return generate(ind+1, nums, curr_subset, ans, k)
+
+def subsequence(nums, k):
+    ans = set()       # use set for uniqueness
+    curr_subset = []
+    return generate(0, nums, curr_subset, ans, k)// here return is go back along with printing num
+   
+
+nums = [1, 2, 1]
+k = 2
+print(subsequence(nums, k))
