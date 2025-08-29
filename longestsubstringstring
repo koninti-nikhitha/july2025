@@ -1,0 +1,39 @@
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        seen = {}        # stores last index of each character
+        start = 0        # window start
+        max_len = 0      # answer
+
+        for i, ch in enumerate(s):    # i = current index, ch = current char
+            # If we've seen ch before AND it's inside the current window
+            if ch in seen and seen[ch] >= start:
+                # move start just after the last duplicate position
+                start = seen[ch] + 1
+
+            # update the last seen index of this character
+            seen[ch] = i  
+
+            # update max_len with current window size
+            max_len = max(max_len, i - start + 1)
+
+        return max_len
+
+
+# Example run
+'''print(Solution().lengthOfLongestSubstring("abcabca"))  # Output: 3
+✅ Step 3: Walkthrough with "abcabca"
+i	ch	start	window substring	max_len
+0	a	0	"a"	1
+1	b	0	"ab"	2
+2	c	0	"abc"	3
+3	a	1	"bca"	3
+4	b	2	"cab"	3
+5	c	3	"abc"	3
+6	a	4	"bca"	3
+👉 Final Answer = 3
+✨ That’s the sliding window:
+Expand the window when there are no repeats.
+Shrink from the left when you hit a duplicate.
+Track the maximum size.
+Would you like me to also give you a visual diagram (boxes and arrows) showing how the window moves across "abcabca"? That might make it even clearer.
+'''
