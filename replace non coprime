@@ -1,0 +1,17 @@
+import math
+from typing import List
+
+class Solution:
+    def replaceNonCoprimes(self, nums: List[int]) -> List[int]:
+        stack = []
+
+        for num in nums:
+            # Keep merging with top of stack while gcd > 1
+            while stack and math.gcd(stack[-1], num) > 1:
+                top = stack.pop()
+                num = (top * num) // math.gcd(top, num)  # LCM formula
+            stack.append(num)
+
+        return stack
+Input: nums = [6,4,3,2,7,6,2]
+Output: [12,7,6]
